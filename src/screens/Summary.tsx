@@ -1,4 +1,4 @@
-import { ScrollView, VStack, Box, Text, HStack } from 'native-base'
+import { ScrollView, VStack, Box, Text, HStack, Button } from 'native-base'
 import { CaretCircleDown } from 'phosphor-react-native'
 import { TouchableOpacity } from 'react-native'
 
@@ -6,7 +6,9 @@ import LogoIcon from '../assets/icon.svg'
 import PixIcon from '../assets/pix-icon.svg'
 import PayIcon from '../assets/payments-icon.svg'
 import ExtratoIcon from '../assets/extrato-icon.svg'
+
 import { transactions } from '../utils/transactions'
+
 import { TransactionItem } from '../components/TransactionItem'
 
 export function Summary() {
@@ -69,7 +71,7 @@ export function Summary() {
           >
             <PayIcon />
             <Text color="blue.800" fontSize="md" fontFamily="bold" mt={2}>
-              Pagame
+              Pagar
             </Text>
           </Box>
           <Box
@@ -95,10 +97,25 @@ export function Summary() {
           flex={1}
           bgColor="white.100"
           borderRadius={10}
-          py={2}
+          py={3}
           px={4}
           borderColor="black.alpha"
           borderWidth={1}
+          marginBottom={4}
+        >
+          <Text fontSize="md" fontFamily="bold" color="blue.500">
+            Meu cartão
+          </Text>
+        </Box>
+        <Box
+          flex={1}
+          bgColor="white.100"
+          borderRadius={10}
+          py={3}
+          px={4}
+          borderColor="black.alpha"
+          borderWidth={1}
+          marginBottom={4}
         >
           <Text fontSize="md" fontFamily="bold" color="blue.500">
             Últimas movimentações
@@ -106,6 +123,9 @@ export function Summary() {
           {transactions.map((item, index) => {
             return <TransactionItem data={item} key={index} />
           })}
+          <Button borderRadius={100} bgColor="blue.500">
+            Ver todas as movimentações
+          </Button>
         </Box>
       </ScrollView>
     </VStack>

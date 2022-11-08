@@ -1,4 +1,4 @@
-import { Box, Text } from 'native-base'
+import { Box, Divider, Text } from 'native-base'
 import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react-native'
 
 interface TransactionProps {
@@ -14,16 +14,22 @@ interface DataProps {
 
 export function TransactionItem({ data }: DataProps) {
   return (
-    <Box flexDirection="row" justifyContent="space-between"  my={2}>
-      <Box flexDirection="row" alignItems='center'>
-        {data.value <= 0 ? (
-          <ArrowCircleDown weight={'bold'} size={20} color="#53BD13" />
-        ) : (
-          <ArrowCircleUp weight={'bold'} size={20} color="#eb3737" />
-        )}
-        <Text fontSize='md' fontFamily='medium' ml={2} color='black.500'>{data.title}</Text>
+    <>
+      <Box flexDirection="row" justifyContent="space-between" my={2}>
+        <Box flexDirection="row" alignItems="center">
+          {data.type === 'income' ? (
+            <ArrowCircleDown weight={'regular'} size={20} color="#53BD13" />
+          ) : (
+            <ArrowCircleUp weight={'regular'} size={20} color="#eb3737" />
+          )}
+          <Text fontSize="sm" fontFamily="bold" ml={2} color="black.500">
+            {data.title}
+          </Text>
+        </Box>
+        <Text fontSize="md" fontFamily="bold">
+          {data.value}
+        </Text>
       </Box>
-      <Text fontSize='md' fontFamily='bold'>{data.value}</Text>
-    </Box>
+    </>
   )
 }
